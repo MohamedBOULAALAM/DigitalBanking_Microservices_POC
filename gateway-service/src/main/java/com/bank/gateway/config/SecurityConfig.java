@@ -1,27 +1,11 @@
 package com.bank.gateway.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
-import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.web.server.SecurityWebFilterChain;
-
-@Configuration
-@EnableWebFluxSecurity
+// Configuration de sécurité simplifiée pour le POC
+// Pour la production, activer OAuth2/JWT avec les dépendances appropriées
+// @Configuration
+// @EnableWebFluxSecurity
 public class SecurityConfig {
-
-    @Bean
-    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        http
-            .csrf(csrf -> csrf.disable())
-            .authorizeExchange(exchanges -> exchanges
-                .pathMatchers("/api/auth/**").permitAll()
-                .anyExchange().authenticated()
-            )
-            .oauth2ResourceServer(oauth2 -> oauth2
-                .jwt(jwt -> {})
-            );
-        return http.build();
-    }
+    // Sécurité désactivée pour faciliter le démarrage du POC
+    // À activer en production avec OAuth2/JWT
 }
 
