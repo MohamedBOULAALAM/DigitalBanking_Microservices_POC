@@ -1,5 +1,6 @@
 package com.bank.virement.client;
 
+import com.bank.virement.dto.BeneficiaireResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface BeneficiaireClient {
 
     @GetMapping("/beneficiaires/{id}")
-    Object getBeneficiaireById(@PathVariable Long id);
+    BeneficiaireResponse getBeneficiaireById(@PathVariable("id") Long id);
 }
 
