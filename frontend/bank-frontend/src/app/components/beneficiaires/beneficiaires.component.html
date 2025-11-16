@@ -1,0 +1,61 @@
+<div class="container">
+  <h2>Gestion des Bénéficiaires</h2>
+  
+  <button class="btn btn-primary" (click)="openForm()">Nouveau Bénéficiaire</button>
+
+  <div *ngIf="showForm" class="form-container">
+    <h3>{{ editingId ? 'Modifier' : 'Nouveau' }} Bénéficiaire</h3>
+    <form (ngSubmit)="saveBeneficiaire()">
+      <div class="form-group">
+        <label>Nom:</label>
+        <input type="text" [(ngModel)]="beneficiaire.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label>Prénom:</label>
+        <input type="text" [(ngModel)]="beneficiaire.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label>RIB:</label>
+        <input type="text" [(ngModel)]="beneficiaire.rib" name="rib" required maxlength="24">
+      </div>
+      <div class="form-group">
+        <label>Type:</label>
+        <select [(ngModel)]="beneficiaire.type" name="type" required>
+          <option value="PHYSIQUE">Physique</option>
+          <option value="MORALE">Morale</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <button type="button" class="btn btn-secondary" (click)="closeForm()">Annuler</button>
+      </div>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>RIB</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of beneficiaires">
+        <td>{{ b.id }}</td>
+        <td>{{ b.nom }}</td>
+        <td>{{ b.prenom }}</td>
+        <td>{{ b.rib }}</td>
+        <td>{{ b.type }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="openForm(b)">Modifier</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteBeneficiaire(b.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
