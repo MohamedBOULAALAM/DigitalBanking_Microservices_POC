@@ -1,0 +1,8 @@
+# Configuration par défaut pour tous les services
+# Les services peuvent surcharger ces valeurs dans leurs propres fichiers
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
