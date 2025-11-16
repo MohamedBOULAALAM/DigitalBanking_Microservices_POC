@@ -4,6 +4,15 @@ echo Demarrage des Microservices Bancaires
 echo ========================================
 echo.
 
+echo Liberation des ports si necessaire...
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8761 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8888 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8080 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8081 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8082 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8083 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+timeout /t 2 /nobreak >nul
+
 echo [1/6] Demarrage du Discovery Service (Eureka)...
 start "Discovery Service" cmd /k "cd discovery-service && mvn spring-boot:run"
 timeout /t 15 /nobreak >nul
@@ -38,6 +47,8 @@ echo - API Gateway: http://localhost:8080
 echo - Swagger Beneficiaire: http://localhost:8081/swagger-ui.html
 echo - Swagger Virement: http://localhost:8082/swagger-ui.html
 echo - Swagger Chatbot: http://localhost:8083/swagger-ui.html
+echo.
+echo Note: Attendez que tous les services soient demarres avant de tester.
 echo.
 pause
 
