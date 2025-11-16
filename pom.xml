@@ -30,6 +30,7 @@
         <module>bénéficiaire-service</module>
         <module>virement-service</module>
         <module>chatbot-service</module>
+        <module>auth-service</module>
     </modules>
 
     <dependencyManagement>
