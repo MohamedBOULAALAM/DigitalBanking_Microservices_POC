@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beneficiaire-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: beneficiaire-service
+  template:
+    metadata:
+      labels:
+        app: beneficiaire-service
+    spec:
+      containers:
+      - name: beneficiaire-service
+        image: your-registry/beneficiaire-service:latest
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: beneficiaire-service
+spec:
+  selector:
+    app: beneficiaire-service
+  ports:
+  - port: 8081
+    targetPort: 8081
+
