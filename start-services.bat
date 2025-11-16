@@ -7,7 +7,7 @@ echo.
 echo Liberation des ports si necessaire...
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8761 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8888 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
-for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8080 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8008 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8081 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8082 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8083 ^| findstr LISTENING') do taskkill /F /PID %%a >nul 2>&1
@@ -43,7 +43,7 @@ echo ========================================
 echo.
 echo Acces aux services:
 echo - Eureka Dashboard: http://localhost:8761
-echo - API Gateway: http://localhost:8080
+echo - API Gateway: http://localhost:8008
 echo - Swagger Beneficiaire: http://localhost:8081/swagger-ui.html
 echo - Swagger Virement: http://localhost:8082/swagger-ui.html
 echo - Swagger Chatbot: http://localhost:8083/swagger-ui.html
