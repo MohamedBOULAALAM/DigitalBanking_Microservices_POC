@@ -54,6 +54,10 @@ build/
 .env.local
 *.env
 
+# Secrets and API Keys (ne pas commiter les clés API)
+**/application-local.yml
+**/application-prod.yml
+
 # Docker
 *.pid
 *.seed
